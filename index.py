@@ -81,8 +81,13 @@ for host in settings["haproxy"]["hosts"]:
             timeout=settings["haproxy"]["timeout"])
         if rsp.status_code == 200:
             data = rsp.text.split("/")
-            hosts[host] = data[1]  # min/avg/max/mdev
-            print("- {}: {}".format(host, hosts[host]))
+            ping = data[1]  # min/avg/max/mdev
+            if ping < settings["latency"]["threshold"]:
+                hosts[host] = ping
+                status = "UP"
+            else:
+                status = "DOWN"
+            print("- {}: {} ({})".format(host, ping, status))
     except Exception as e:
         print("- {}: {}".format(host, str(e)))
         pass
