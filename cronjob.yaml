@@ -4,7 +4,7 @@ metadata:
   name: dns-lb
   namespace: kube-system
 spec:
-  schedule: "7 0 * * *"
+  schedule: "*/7 * * * *"
   jobTemplate:
     spec:
       template:
