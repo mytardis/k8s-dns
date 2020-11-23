@@ -1,5 +1,9 @@
 sleep: 0
 
+memcached:
+  server: 127.0.0.1
+  port: 11211
+
 openstack:
   endpoint: https://keystone.rc.nectar.org.au:5000/v3/
   username: john.doe@monash.edu

@@ -1,3 +1,4 @@
 pyyaml==5.3.1
+pymemcache==3.4.0
 python-designateclient==4.1.0
 flake8==3.8.4
