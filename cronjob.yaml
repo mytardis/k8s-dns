@@ -1,0 +1,24 @@
+apiVersion: batch/v1beta1
+kind: CronJob
+metadata:
+  name: dns-lb
+  namespace: kube-system
+spec:
+  schedule: "7 0 * * *"
+  jobTemplate:
+    spec:
+      template:
+        spec:
+          restartPolicy: OnFailure
+          containers:
+          - name: go
+            image: mytardis/k8s-dns:latest
+            imagePullPolicy: Always
+            volumeMounts:
+            - name: settings
+              mountPath: /app/settings.yaml
+              subPath: settings.yaml
+          volumes:
+            - name: settings
+              configMap:
+                name: dns-config
