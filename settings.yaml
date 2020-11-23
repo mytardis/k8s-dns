@@ -1,0 +1,27 @@
+sleep: 0
+
+openstack:
+  endpoint: https://keystone.rc.nectar.org.au:5000/v3/
+  username: john.doe@monash.edu
+  password: THISISAPASSWORD
+  project:
+    id: 000
+    name: My_Nectar_Project
+
+dns:
+  zone: my-nectar-project.cloud.edu.au. # make sure . in the end
+  name: cluster.my-nectar-project.cloud.edu.au.
+  ttl: 300
+
+haproxy:
+  timeout: 3
+  path: http://{}:8080/ping.txt
+  hosts:
+  - 10.0.0.1 # haproxy-1a
+  - 10.0.0.2 # haproxy-2b
+  - 10.0.0.3  # haproxy-1c
+  - 10.0.0.4  # haproxy-2d
+
+latency:
+  threshold: 45 # ms = x3 times regular avg ping to google.com which is ~15ms
+                # host is excluded from DNS is latency is higher than threshold
