@@ -19,8 +19,8 @@ haproxy:
   hosts:
   - 10.0.0.1 # haproxy-1a
   - 10.0.0.2 # haproxy-2b
-  - 10.0.0.3  # haproxy-1c
-  - 10.0.0.4  # haproxy-2d
+  - 10.0.0.3 # haproxy-1c
+  - 10.0.0.4 # haproxy-2d
 
 latency:
   threshold: 45 # ms = x3 times regular avg ping to google.com which is ~15ms
