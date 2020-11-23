@@ -41,7 +41,7 @@ if settings["sleep"] != 0:
 
 try:
     mc = Client(
-        (settings["memcached"]["server"], settings["memcached"]["port"]),
+        (settings["memcached"]["server"], int(settings["memcached"]["port"])),
         serializer=json_serializer,
         deserializer=json_deserializer)
 except Exception as e:
