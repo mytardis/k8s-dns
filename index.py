@@ -81,7 +81,7 @@ for host in settings["haproxy"]["hosts"]:
             timeout=settings["haproxy"]["timeout"])
         if rsp.status_code == 200:
             data = rsp.text.split("/")
-            ping = int(data[1])  # min/avg/max/mdev
+            ping = float(data[1])  # min/avg/max/mdev
             if ping < settings["latency"]["threshold"]:
                 hosts[host] = ping
                 status = "UP"
